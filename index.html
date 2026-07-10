@@ -8,11 +8,18 @@
 
 <title>Una carta para ti 💜</title>
 
+<meta name="description" content="Hay algo que quiero decirte...">
+
 <meta property="og:title" content="Una carta para ti 💜">
-<meta property="og:description" content="Hay algo que quiero decirte...">
-<meta property="og:image" content="https://TU-USUARIO.github.io/Carta/portada.png">
+<meta property="og:description" content="Hay algo que quiero decirte... ábrela el 25 de julio.">
+<meta property="og:image" content="https://kaleth77.github.io/cartaa/portada.PNG">
+<meta property="og:url" content="https://kaleth77.github.io/cartaa/">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://TU-USUARIO.github.io/Carta/">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Una carta para ti 💜">
+<meta name="twitter:description" content="Hay algo que quiero decirte...">
+<meta name="twitter:image" content="https://kaleth77.github.io/cartaa/portada.PNG">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,13 +32,13 @@
 
 <body>
 
-<div id="particulas"></div>
+<div id="particles"></div>
 
-<div id="bloqueado">
+<section id="locked">
 
-<img src="sobre.png" class="sobre">
+<img src="sobre.PNG" class="envelope" alt="Sobre">
 
-<h1>Una carta para ti 💜</h1>
+<h1>💜 Una carta para ti 💜</h1>
 
 <p>
 
@@ -39,37 +46,33 @@ Esta carta fue escrita con mucho cariño.
 
 <br><br>
 
-Podrá abrirse el
+Solo podrá abrirse el
 
-<b>25 de julio</b>
+<strong>25 de julio</strong>
 
 </p>
 
-<div class="contador" id="contador"></div>
+<div id="countdown"></div>
+
+</section>
+
+<section id="letterSection">
+
+<div class="envelopeOpen">
+
+<img src="sobre.PNG" id="bigEnvelope" alt="Sobre">
 
 </div>
 
-<div id="contenido">
+<div class="letter">
 
-<div class="sobre-abierto">
+<h1>🌷 Feliz cumpleaños 🌷</h1>
 
-<img src="sobre.png" id="sobreGrande">
-
-</div>
-
-<div class="carta">
-
-<h1>
-
-Feliz cumpleaños 🌷
-
-</h1>
-
-<p id="texto"></p>
+<p id="letterText"></p>
 
 </div>
 
-</div>
+</section>
 
 <script src="script.js"></script>
 
