@@ -328,3 +328,147 @@ line-height:1.9;
 }
 
 }
+/* ============================
+   SOBRE ANIMADO
+============================ */
+
+.envelopeOpen{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+#bigEnvelope{
+    width:180px;
+    cursor:pointer;
+    transition:.8s;
+    filter:drop-shadow(0 15px 30px rgba(0,0,0,.35));
+}
+
+#bigEnvelope:hover{
+    transform:scale(1.05);
+}
+
+.abrirSobre{
+    animation:abrirSobre 1.8s forwards;
+}
+
+@keyframes abrirSobre{
+
+0%{
+transform:scale(1) rotate(0);
+}
+
+40%{
+transform:scale(1.08) rotate(-5deg);
+}
+
+70%{
+transform:rotate(5deg);
+}
+
+100%{
+opacity:0;
+transform:translateY(-180px) scale(.7);
+}
+
+}
+
+/* ============================
+   CARTA
+============================ */
+
+.letter{
+
+opacity:0;
+
+transform:translateY(120px);
+
+transition:1.5s;
+
+}
+
+.mostrarCarta{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+/* ============================
+   CURSOR
+============================ */
+
+.cursor{
+
+display:inline-block;
+
+width:3px;
+
+height:24px;
+
+background:#7a38c9;
+
+margin-left:3px;
+
+animation:cursor .8s infinite;
+
+vertical-align:middle;
+
+}
+
+@keyframes cursor{
+
+50%{
+
+opacity:0;
+
+}
+
+}
+
+/* ============================
+   PETALOS
+============================ */
+
+.petalo{
+
+position:fixed;
+
+top:-50px;
+
+font-size:24px;
+
+pointer-events:none;
+
+animation:caer linear forwards;
+
+z-index:999;
+
+}
+
+@keyframes caer{
+
+0%{
+
+transform:
+translateY(-50px)
+rotate(0deg);
+
+opacity:1;
+
+}
+
+100%{
+
+transform:
+translateY(110vh)
+rotate(720deg);
+
+opacity:0;
+
+}
+
+}
