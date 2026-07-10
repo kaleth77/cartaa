@@ -19,6 +19,7 @@ const petalos = document.getElementById("petalos");
 const inicio = document.getElementById("inicio");
 const carta = document.getElementById("carta");
 
+const contenedorSobre = document.getElementById("contenedorSobre");
 const sobre = document.getElementById("sobre");
 const sobreAbierto = document.getElementById("sobreAbierto");
 
@@ -80,7 +81,7 @@ Te quiero, mi salvadora. 💜`;
 
 if(MODO_PRUEBA){
 
-    sobre.onclick=abrirCarta;
+    contenedorSobre.onclick=abrirCarta;
 
 }else{
 
@@ -94,7 +95,7 @@ function comprobarFecha(){
 
     if(new Date()>=FECHA_APERTURA){
 
-        sobre.onclick=abrirCarta;
+        contenedorSobre.onclick=abrirCarta;
 
     }
 
@@ -106,7 +107,7 @@ function comprobarFecha(){
 
 function abrirCarta(){
 
-    sobre.onclick=null;
+    contenedorSobre.onclick=null;
 
     sobre.classList.add("abrirSobre");
 
