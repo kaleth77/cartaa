@@ -3,7 +3,7 @@
 // ===============================
 
 // Cambia el año si lo necesitas
-const fechaApertura = new Date("2020-07-25T00:00:00");
+const fechaApertura = new Date("2020-01-01T00:00:00");
 
 // ===============================
 // ELEMENTOS
