@@ -87,7 +87,23 @@ function abrirCarta(){
 
     letterSection.style.display="flex";
 
-    escribir();
+    const sobre=document.getElementById("bigEnvelope");
+
+    const carta=document.querySelector(".letter");
+
+    sobre.classList.add("abrirSobre");
+
+    setTimeout(()=>{
+
+        sobre.style.display="none";
+
+        carta.classList.add("mostrarCarta");
+
+        escribir();
+
+        lluviaPetalos();
+
+    },1700);
 
 }
 
@@ -95,17 +111,21 @@ function abrirCarta(){
 // MAQUINA DE ESCRIBIR
 // ===============================
 
-let i=0;
-
 function escribir(){
 
     if(i<mensaje.length){
 
-        letterText.innerHTML+=mensaje.charAt(i);
+        letterText.innerHTML=
+        mensaje.substring(0,i+1)+
+        '<span class="cursor"></span>';
 
         i++;
 
         setTimeout(escribir,25);
+
+    }else{
+
+        letterText.innerHTML=mensaje;
 
     }
 
