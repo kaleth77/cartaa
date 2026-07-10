@@ -152,3 +152,38 @@ for(let i=0;i<90;i++){
     particles.appendChild(estrella);
 
 }
+// =======================
+// LLUVIA DE PÉTALOS
+// =======================
+
+function crearPetalo(){
+
+    const p=document.createElement("div");
+
+    p.className="petalo";
+
+    p.innerHTML="🌸";
+
+    p.style.left=Math.random()*100+"vw";
+
+    p.style.animationDuration=
+    (6+Math.random()*6)+"s";
+
+    p.style.fontSize=
+    (18+Math.random()*18)+"px";
+
+    document.body.appendChild(p);
+
+    setTimeout(()=>{
+
+        p.remove();
+
+    },12000);
+
+}
+
+function lluviaPetalos(){
+
+    setInterval(crearPetalo,350);
+
+}
