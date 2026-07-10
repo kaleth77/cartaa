@@ -1,40 +1,71 @@
 // ===============================
-// ESTRELLAS
+// CONFIGURACIÓN
+// ===============================
+
+// true = abre inmediatamente
+// false = espera la fecha indicada
+const MODO_PRUEBA = true;
+
+// Fecha para cuando desactives el modo prueba
+const FECHA_APERTURA = new Date("2026-07-25T00:00:00");
+
+// ===============================
+// ELEMENTOS
 // ===============================
 
 const estrellas = document.getElementById("estrellas");
+const petalos = document.getElementById("petalos");
 
-for(let i = 0; i < 80; i++){
+const inicio = document.getElementById("inicio");
+const carta = document.getElementById("carta");
 
-    const estrella = document.createElement("div");
+const sobre = document.getElementById("sobre");
+const sobreAbierto = document.getElementById("sobreAbierto");
 
-    estrella.className = "estrella";
+const papel = document.querySelector(".papel");
+const texto = document.getElementById("texto");
 
-    estrella.style.left = Math.random()*100 + "vw";
-    estrella.style.top = Math.random()*100 + "vh";
+// ===============================
+// ESTRELLAS
+// ===============================
 
-    estrella.style.animationDelay = Math.random()*3 + "s";
-    estrella.style.animationDuration = (2 + Math.random()*3) + "s";
+for(let i=0;i<90;i++){
 
-    estrellas.appendChild(estrella);
+    const e=document.createElement("div");
+
+    e.className="estrella";
+
+    e.style.left=Math.random()*100+"vw";
+    e.style.top=Math.random()*100+"vh";
+
+    e.style.animationDelay=Math.random()*3+"s";
+    e.style.animationDuration=(2+Math.random()*3)+"s";
+
+    estrellas.appendChild(e);
 
 }
 
 // ===============================
-// CARTA
+// MENSAJE
 // ===============================
 
-const carta = `Feliz cumpleaños, reina hermosa. Que Dios te bendiga y te siga bendiciendo siempre.
+const mensaje=`Feliz cumpleaños, reina hermosa. Que Dios te bendiga y te siga bendiciendo siempre.
 
 Esta carta, más que para felicitarte, era para decirte de verdad que lo siento mucho. Quiero pedirte una disculpa, no solo a ti, sino también a tus padres, porque no solo te falté el respeto a ti, sino también a ellos al momento de faltarte.
 
-No es nada para decirte que regreses, ni mucho menos. Solo espero de verdad que me disculpes. Y no es solo por decir “me disculpo” y ya, sino porque en serio estoy arrepentido. Recordé una reflexión inspirada en las palabras de Jesús:
+No es nada para decirte que regreses, ni mucho menos. Solo espero de verdad que me disculpes.
 
-“No nos disculpamos para ser perdonados; nos disculpamos porque estamos arrepentidos. El perdón es un obsequio que nos hace la otra persona”.
+"No nos disculpamos para ser perdonados; nos disculpamos porque estamos arrepentidos. El perdón es un obsequio que nos hace la otra persona."
 
-Pues solo eso, niña. De verdad espero que lo leas todo. También quiero decirte que, si algún día quisieras conocerme de nuevo, yo estaría dispuesto. Creo que, si me llegaras a conocer ahora, te asombrarías de todo lo bueno que he cambiado.
+También quiero decirte que, si algún día quisieras conocerme de nuevo, yo estaría dispuesto. Creo que, si me llegaras a conocer ahora, te asombrarías de todo lo bueno que he cambiado.
 
-Pero, bueno, feliz cumpleaños, reina hermosa. Te quiero muchísimo. Mi fecha favorita siempre será el 18/05/2022, así sea que no te tenga. Como te dije, no busco que vuelvas ni nada. Me siento feliz con solo saber que tú estás feliz y bien.
+Pero bueno...
+
+Feliz cumpleaños, reina hermosa.
+
+Te quiero muchísimo.
+
+Mi fecha favorita siempre será el 18/05/2022.
 
 Guardé solo lo bueno de ti,
 dieciocho veces en el día te recuerdo,
@@ -43,23 +74,43 @@ siempre vuelvo al mismo recuerdo.
 
 Te quiero, mi salvadora. 💜`;
 
-const sobre = document.getElementById("sobre");
-const sobreAbierto = document.getElementById("sobreAbierto");
-const inicio = document.getElementById("inicio");
-const cartaDiv = document.getElementById("carta");
-const texto = document.getElementById("texto");
+// ===============================
+// ABRIR
+// ===============================
 
-sobre.addEventListener("click", abrirCarta);
+if(MODO_PRUEBA){
+
+    sobre.onclick=abrirCarta;
+
+}else{
+
+    comprobarFecha();
+
+    setInterval(comprobarFecha,1000);
+
+}
+
+function comprobarFecha(){
+
+    if(new Date()>=FECHA_APERTURA){
+
+        sobre.onclick=abrirCarta;
+
+    }
+
+}
 
 // ===============================
-// ABRIR SOBRE
+// ANIMACIÓN
 // ===============================
 
 function abrirCarta(){
 
-    sobre.style.pointerEvents="none";
+    sobre.onclick=null;
 
-    sobre.classList.add("abrir");
+    sobre.classList.add("abrirSobre");
+
+    document.getElementById("sello").style.display="none";
 
     setTimeout(()=>{
 
@@ -67,20 +118,23 @@ function abrirCarta(){
 
         sobreAbierto.style.display="block";
 
-    },650);
+    },700);
 
     setTimeout(()=>{
 
         inicio.style.opacity="0";
-        inicio.style.transition=".8s";
 
-    },1200);
+    },1300);
 
     setTimeout(()=>{
 
         inicio.style.display="none";
 
-        cartaDiv.style.display="flex";
+        carta.style.display="flex";
+
+        papel.classList.add("mostrarCarta");
+
+        lluviaPetalos();
 
         escribir();
 
@@ -89,18 +143,19 @@ function abrirCarta(){
 }
 
 // ===============================
-// MAQUINA DE ESCRIBIR
+// MÁQUINA DE ESCRIBIR
 // ===============================
 
-let i = 0;
+let i=0;
 
 function escribir(){
 
-    if(i < carta.length){
+    if(i<mensaje.length){
 
-        texto.innerHTML =
-        carta.substring(0,i+1) +
-        '<span style="color:#8a4ec8;">|</span>';
+        texto.innerHTML=
+
+        mensaje.substring(0,i+1)+
+        '<span class="cursor"></span>';
 
         i++;
 
@@ -108,8 +163,42 @@ function escribir(){
 
     }else{
 
-        texto.innerHTML = carta;
+        texto.innerHTML=mensaje;
 
     }
+
+}
+
+// ===============================
+// PÉTALOS
+// ===============================
+
+function crearPetalo(){
+
+    const p=document.createElement("div");
+
+    p.className="petalo";
+
+    p.innerHTML="🌸";
+
+    p.style.left=Math.random()*100+"vw";
+
+    p.style.animationDuration=(6+Math.random()*5)+"s";
+
+    p.style.fontSize=(18+Math.random()*15)+"px";
+
+    petalos.appendChild(p);
+
+    setTimeout(()=>{
+
+        p.remove();
+
+    },11000);
+
+}
+
+function lluviaPetalos(){
+
+    setInterval(crearPetalo,350);
 
 }
