@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap');
 
 *{
     margin:0;
@@ -6,468 +6,258 @@
     box-sizing:border-box;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
 body{
-    width:100%;
-    min-height:100vh;
-    overflow:hidden;
+
     font-family:'Poppins',sans-serif;
 
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+
     background:
-    linear-gradient(rgba(60,25,95,.45),rgba(40,15,70,.55)),
+    linear-gradient(rgba(83,40,132,.55),rgba(43,18,72,.75)),
     url("fondo.PNG");
 
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
-    background-attachment:fixed;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
 }
 
-#particles{
+/* ===== ESTRELLAS ===== */
+
+#estrellas{
+
     position:fixed;
     inset:0;
-    pointer-events:none;
     overflow:hidden;
-    z-index:1;
+    pointer-events:none;
+
 }
 
-#locked,
-#letterSection{
-    position:relative;
-    z-index:5;
+.estrella{
+
+    position:absolute;
+
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:white;
+
+    opacity:.8;
+
+    animation:brillar 3s infinite;
+
 }
 
-#locked{
-    width:92%;
-    max-width:500px;
+@keyframes brillar{
 
-    padding:35px;
+    0%{
+        opacity:.2;
+        transform:scale(.5);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.5);
+    }
+
+    100%{
+        opacity:.2;
+        transform:scale(.5);
+    }
+
+}
+
+/* ===== PANTALLA INICIAL ===== */
+
+#inicio{
 
     text-align:center;
 
-    background:rgba(255,255,255,.12);
+    background:rgba(255,255,255,.15);
 
-    backdrop-filter:blur(16px);
+    backdrop-filter:blur(15px);
 
-    border:1px solid rgba(255,255,255,.25);
+    padding:35px;
 
-    border-radius:28px;
+    border-radius:30px;
 
-    box-shadow:0 20px 60px rgba(0,0,0,.35);
+    width:90%;
+    max-width:430px;
 
     color:white;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.35);
+
 }
 
-.envelope{
+#sobre{
 
     width:220px;
 
-    margin-bottom:25px;
+    cursor:pointer;
 
-    animation:float 3s ease-in-out infinite;
+    transition:.4s;
 
-    filter:drop-shadow(0 15px 25px rgba(0,0,0,.4));
-
-}
-
-#locked h1{
-
-font-family:'Cormorant Garamond',serif;
-
-font-size:48px;
-
-margin-bottom:18px;
+    animation:flotar 3s infinite ease-in-out;
 
 }
 
-#locked p{
+#sobre:hover{
 
-font-size:18px;
-
-line-height:1.8;
+    transform:scale(1.05);
 
 }
 
-#countdown{
+@keyframes flotar{
 
-margin-top:25px;
+    50%{
 
-font-size:22px;
+        transform:translateY(-12px);
 
-font-weight:bold;
-
-color:#ffe8ff;
+    }
 
 }
 
-#letterSection{
+#inicio h1{
 
-display:none;
+    font-family:'Cormorant Garamond',serif;
 
-width:100%;
+    font-size:48px;
 
-justify-content:center;
-
-align-items:center;
-
-padding:30px;
+    margin:20px 0;
 
 }
 
-.letter{
+#inicio p{
 
-width:95%;
+    font-size:18px;
 
-max-width:780px;
-
-max-height:88vh;
-
-overflow-y:auto;
-
-background:rgba(255,255,255,.96);
-
-border-radius:28px;
-
-padding:45px;
-
-box-shadow:0 25px 70px rgba(0,0,0,.35);
-
-animation:fadeUp 1.2s ease;
+    line-height:1.8;
 
 }
 
-.letter h1{
+/* ===== CARTA ===== */
 
-font-family:'Cormorant Garamond',serif;
+#carta{
 
-font-size:50px;
+    display:none;
 
-text-align:center;
+    width:100%;
 
-color:#884ec6;
+    justify-content:center;
 
-margin-bottom:30px;
+    align-items:center;
 
-}
-
-#letterText{
-
-white-space:pre-line;
-
-font-size:19px;
-
-line-height:2;
-
-color:#444;
+    padding:25px;
 
 }
 
-.envelopeOpen{
+.papel{
 
-text-align:center;
+    background:white;
 
-margin-bottom:25px;
+    width:95%;
+    max-width:760px;
 
-}
+    max-height:90vh;
 
-#bigEnvelope{
+    overflow:auto;
 
-width:180px;
+    border-radius:25px;
 
-animation:openEnvelope 1.2s ease;
+    padding:40px;
 
-}
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
 
-@keyframes float{
-
-0%{
-transform:translateY(0px);
-}
-
-50%{
-transform:translateY(-15px);
-}
-
-100%{
-transform:translateY(0px);
-}
+    animation:subir 1s;
 
 }
 
-@keyframes fadeUp{
+@keyframes subir{
 
-0%{
+    from{
 
-opacity:0;
+        transform:translateY(80px);
 
-transform:translateY(60px);
+        opacity:0;
 
-}
+    }
 
-100%{
+    to{
 
-opacity:1;
+        transform:translateY(0);
 
-transform:translateY(0);
+        opacity:1;
 
-}
-
-}
-
-@keyframes openEnvelope{
-
-0%{
-
-transform:scale(.6) rotate(-12deg);
-
-opacity:0;
+    }
 
 }
 
-100%{
+.papel h2{
 
-transform:scale(1);
+    text-align:center;
 
-opacity:1;
+    color:#8a4ec8;
 
-}
+    font-size:45px;
 
-}
+    margin-bottom:30px;
 
-.sparkle{
-
-position:absolute;
-
-width:5px;
-
-height:5px;
-
-border-radius:50%;
-
-background:white;
-
-animation:twinkle 3s linear infinite;
-
-opacity:.7;
+    font-family:'Cormorant Garamond',serif;
 
 }
 
-@keyframes twinkle{
+#texto{
 
-0%{
+    white-space:pre-line;
 
-opacity:.2;
+    line-height:2;
 
-transform:scale(.4);
+    color:#444;
 
-}
-
-50%{
-
-opacity:1;
-
-transform:scale(1.5);
+    font-size:18px;
 
 }
 
-100%{
-
-opacity:.2;
-
-transform:scale(.4);
-
-}
-
-}
+/* ===== RESPONSIVE ===== */
 
 @media(max-width:768px){
 
-.envelope{
+#sobre{
 
-width:170px;
-
-}
-
-#locked h1{
-
-font-size:38px;
+    width:170px;
 
 }
 
-#locked p{
+#inicio h1{
 
-font-size:16px;
-
-}
-
-.letter{
-
-padding:28px;
+    font-size:36px;
 
 }
 
-.letter h1{
+.papel{
 
-font-size:36px;
-
-}
-
-#letterText{
-
-font-size:17px;
-
-line-height:1.9;
+    padding:25px;
 
 }
 
-}
-/* ============================
-   SOBRE ANIMADO
-============================ */
+.papel h2{
 
-.envelopeOpen{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    margin-bottom:25px;
-}
-
-#bigEnvelope{
-    width:180px;
-    cursor:pointer;
-    transition:.8s;
-    filter:drop-shadow(0 15px 30px rgba(0,0,0,.35));
-}
-
-#bigEnvelope:hover{
-    transform:scale(1.05);
-}
-
-.abrirSobre{
-    animation:abrirSobre 1.8s forwards;
-}
-
-@keyframes abrirSobre{
-
-0%{
-transform:scale(1) rotate(0);
-}
-
-40%{
-transform:scale(1.08) rotate(-5deg);
-}
-
-70%{
-transform:rotate(5deg);
-}
-
-100%{
-opacity:0;
-transform:translateY(-180px) scale(.7);
-}
+    font-size:34px;
 
 }
 
-/* ============================
-   CARTA
-============================ */
+#texto{
 
-.letter{
-
-opacity:0;
-
-transform:translateY(120px);
-
-transition:1.5s;
-
-}
-
-.mostrarCarta{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-/* ============================
-   CURSOR
-============================ */
-
-.cursor{
-
-display:inline-block;
-
-width:3px;
-
-height:24px;
-
-background:#7a38c9;
-
-margin-left:3px;
-
-animation:cursor .8s infinite;
-
-vertical-align:middle;
-
-}
-
-@keyframes cursor{
-
-50%{
-
-opacity:0;
-
-}
-
-}
-
-/* ============================
-   PETALOS
-============================ */
-
-.petalo{
-
-position:fixed;
-
-top:-50px;
-
-font-size:24px;
-
-pointer-events:none;
-
-animation:caer linear forwards;
-
-z-index:999;
-
-}
-
-@keyframes caer{
-
-0%{
-
-transform:
-translateY(-50px)
-rotate(0deg);
-
-opacity:1;
-
-}
-
-100%{
-
-transform:
-translateY(110vh)
-rotate(720deg);
-
-opacity:0;
+    font-size:17px;
 
 }
 
