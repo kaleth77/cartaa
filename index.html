@@ -11,7 +11,7 @@
 <meta name="description" content="Hay algo que quiero decirte...">
 
 <meta property="og:title" content="Una carta para ti 💜">
-<meta property="og:description" content="Hay algo que quiero decirte... ábrela el 25 de julio.">
+<meta property="og:description" content="Hay algo que quiero decirte...">
 <meta property="og:image" content="https://kaleth77.github.io/cartaa/portada.PNG">
 <meta property="og:url" content="https://kaleth77.github.io/cartaa/">
 <meta property="og:type" content="website">
@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
 
@@ -32,47 +32,40 @@
 
 <body>
 
-<div id="particles"></div>
+<!-- Fondo de estrellas -->
+<div id="estrellas"></div>
 
-<section id="locked">
+<!-- Pantalla principal -->
+<div id="inicio">
 
-<img src="sobre.PNG" class="envelope" alt="Sobre">
+    <img src="sobre.PNG" id="sobre" alt="Sobre">
 
-<h1>💜 Una carta para ti 💜</h1>
+    <h1>💜 Una carta para ti 💜</h1>
 
-<p>
+    <p>
 
-Esta carta fue escrita con mucho cariño.
+        Esta carta fue escrita con mucho cariño.
 
-<br><br>
+        <br><br>
 
-Solo podrá abrirse el
+        Toca el sobre para abrirla.
 
-<strong>25 de julio</strong>
-
-</p>
-
-<div id="countdown"></div>
-
-</section>
-
-<section id="letterSection">
-
-<div class="envelopeOpen">
-
-<img src="sobre.PNG" id="bigEnvelope" alt="Sobre">
+    </p>
 
 </div>
 
-<div class="letter">
+<!-- Carta -->
+<div id="carta">
 
-<h1>🌷 Feliz cumpleaños 🌷</h1>
+    <div class="papel">
 
-<p id="letterText"></p>
+        <h2>🌷 Feliz cumpleaños 🌷</h2>
+
+        <p id="texto"></p>
+
+    </div>
 
 </div>
-
-</section>
 
 <script src="script.js"></script>
 
