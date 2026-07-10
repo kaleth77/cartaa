@@ -10,11 +10,11 @@ for(let i = 0; i < 80; i++){
 
     estrella.className = "estrella";
 
-    estrella.style.left = Math.random() * 100 + "vw";
-    estrella.style.top = Math.random() * 100 + "vh";
+    estrella.style.left = Math.random()*100 + "vw";
+    estrella.style.top = Math.random()*100 + "vh";
 
-    estrella.style.animationDelay = Math.random() * 3 + "s";
-    estrella.style.animationDuration = (2 + Math.random() * 3) + "s";
+    estrella.style.animationDelay = Math.random()*3 + "s";
+    estrella.style.animationDuration = (2 + Math.random()*3) + "s";
 
     estrellas.appendChild(estrella);
 
@@ -44,28 +44,53 @@ siempre vuelvo al mismo recuerdo.
 Te quiero, mi salvadora. 💜`;
 
 const sobre = document.getElementById("sobre");
+const sobreAbierto = document.getElementById("sobreAbierto");
 const inicio = document.getElementById("inicio");
 const cartaDiv = document.getElementById("carta");
 const texto = document.getElementById("texto");
 
 sobre.addEventListener("click", abrirCarta);
 
+// ===============================
+// ABRIR SOBRE
+// ===============================
+
 function abrirCarta(){
 
-    sobre.style.transform = "scale(.8) rotate(-10deg)";
-    sobre.style.opacity = "0";
+    sobre.style.pointerEvents="none";
+
+    sobre.classList.add("abrir");
 
     setTimeout(()=>{
 
-        inicio.style.display = "none";
+        sobre.style.display="none";
 
-        cartaDiv.style.display = "flex";
+        sobreAbierto.style.display="block";
+
+    },650);
+
+    setTimeout(()=>{
+
+        inicio.style.opacity="0";
+        inicio.style.transition=".8s";
+
+    },1200);
+
+    setTimeout(()=>{
+
+        inicio.style.display="none";
+
+        cartaDiv.style.display="flex";
 
         escribir();
 
-    },700);
+    },1800);
 
 }
+
+// ===============================
+// MAQUINA DE ESCRIBIR
+// ===============================
 
 let i = 0;
 
