@@ -4,7 +4,7 @@
 
 // true = abre inmediatamente
 // false = espera la fecha indicada
-const MODO_PRUEBA = true;
+const MODO_PRUEBA = false;
 
 // Fecha para cuando desactives el modo prueba
 const FECHA_APERTURA = new Date("2026-07-25T00:00:00");
