@@ -73,9 +73,7 @@ function actualizarContador(){
 
 }
 
-setInterval(actualizarContador,1000);
 
-actualizarContador();
 
 // ===============================
 // ABRIR CARTA
@@ -187,3 +185,4 @@ function lluviaPetalos(){
     setInterval(crearPetalo,350);
 
 }
+abrirCarta();
